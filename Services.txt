@@ -1,0 +1,5 @@
+
+ApiGateway: 5000
+
+Services
+	- BusServiceApi: 5001
