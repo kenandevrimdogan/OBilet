@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace BusService.API.Services.Settings
+namespace LocationBus.API.Services.Settings
 {
     public class ObiletApiSettings 
     {

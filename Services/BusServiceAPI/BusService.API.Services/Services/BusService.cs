@@ -1,14 +1,14 @@
-﻿using BusService.API.Infrastructure;
-using BusService.API.Models.Request;
-using BusService.API.Models.Response;
-using BusService.API.Services.Settings;
+﻿using LocationBus.API.Infrastructure;
+using LocationBus.API.Models.Request;
+using LocationBus.API.Models.Response;
+using LocationBus.API.Services.Settings;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 
-namespace BusService.API.Services.Services
+namespace LocationBus.API.Services.Concrete
 {
     public class BusService : IBusService
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusService.API.Models.Request
+namespace LocationBus.API.Models.Request
 {
     public class ConnectionRequest
     {

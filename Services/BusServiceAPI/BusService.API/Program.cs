@@ -1,6 +1,6 @@
 
-using BusService.API.Infrastructure;
-using BusService.API.Services.Settings;
+using LocationBus.API.Infrastructure;
+using LocationBus.API.Services.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +16,7 @@ builder.Services.AddHttpClient();
 
 
 // Services
-builder.Services.AddScoped<IBusService, BusService.API.Services.Services.BusService>();
+builder.Services.AddScoped<IBusService, LocationBus.API.Services.Concrete.BusService>();
 
 var app = builder.Build();
 

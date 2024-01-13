@@ -1,9 +1,9 @@
-﻿using BusService.API.Infrastructure;
-using BusService.API.Models.Request;
-using BusService.API.Models.Response;
+﻿using LocationBus.API.Infrastructure;
+using LocationBus.API.Models.Request;
+using LocationBus.API.Models.Response;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BusService.API.Controllers
+namespace LocationBus.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BusService.API.Models.Response
+namespace LocationBus.API.Models.Response
 {
     public class Datum
     {

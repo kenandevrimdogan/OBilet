@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BusService.API.Models.Request
+namespace LocationBus.API.Models.Request
 {
     public class DeviceSessionRequest
     {

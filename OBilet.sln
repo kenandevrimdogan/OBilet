@@ -10,15 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBilet.API.Gateway", "OBilet.API.Gateway\OBilet.API.Gateway.csproj", "{BA7C7088-51D4-41F3-B19F-2CE2BB6DE1CA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusServiceAPI", "BusServiceAPI", "{A3770D9C-9602-4107-BD97-DCB1A9F77112}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocationBusAPI", "LocationBusAPI", "{A3770D9C-9602-4107-BD97-DCB1A9F77112}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusService.API", "Services\BusServiceAPI\BusService.API\BusService.API.csproj", "{5553F7E9-A55B-4729-9B84-76FFF066FAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationBus.API", "Services\BusServiceAPI\BusService.API\LocationBus.API.csproj", "{5553F7E9-A55B-4729-9B84-76FFF066FAF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusService.API.Infrastructure", "Services\BusServiceAPI\BusService.API.Infrastructure\BusService.API.Infrastructure.csproj", "{5799FF6E-95FD-49FA-9B32-C7E1DDCDC9E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationBus.API.Infrastructure", "Services\BusServiceAPI\BusService.API.Infrastructure\LocationBus.API.Infrastructure.csproj", "{5799FF6E-95FD-49FA-9B32-C7E1DDCDC9E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusService.API.Models", "Services\BusServiceAPI\BusService.API.Models\BusService.API.Models.csproj", "{33CF8586-46B4-4F8E-8002-1648033A3622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationBus.API.Models", "Services\BusServiceAPI\BusService.API.Models\LocationBus.API.Models.csproj", "{33CF8586-46B4-4F8E-8002-1648033A3622}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusService.API.Services", "Services\BusServiceAPI\BusService.API.Services\BusService.API.Services.csproj", "{00FA15E9-8F45-47BC-AF3D-754AEC9E1E46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationBus.API.Services", "Services\BusServiceAPI\BusService.API.Services\LocationBus.API.Services.csproj", "{00FA15E9-8F45-47BC-AF3D-754AEC9E1E46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

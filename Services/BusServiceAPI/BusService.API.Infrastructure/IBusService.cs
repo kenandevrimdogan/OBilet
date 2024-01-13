@@ -1,7 +1,7 @@
-﻿using BusService.API.Models.Request;
-using BusService.API.Models.Response;
+﻿using LocationBus.API.Models.Request;
+using LocationBus.API.Models.Response;
 
-namespace BusService.API.Infrastructure
+namespace LocationBus.API.Infrastructure
 {
     public interface IBusService
     {
