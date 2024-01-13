@@ -7,11 +7,11 @@ namespace LocationBus.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class BusController : ControllerBase
+    public class LocationBusController : ControllerBase
     {
-        private readonly IBusService _busService;
+        private readonly ILocationBusService _busService;
 
-        public BusController(IBusService busService)
+        public LocationBusController(ILocationBusService busService)
         {
             _busService = busService;
         }

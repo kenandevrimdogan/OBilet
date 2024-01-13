@@ -2,5 +2,7 @@
 ApiGateway: 5000
 
 Services
-	- LocationBusServiceApi		: 5001
-	- JourneyServiceApi			: 5002
+	- OBiletApi					: 5001
+	- LocationBusServiceApi		: 5002
+	- JourneyServiceApi			: 5003
+	

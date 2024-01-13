@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Journey.API.Models\Journey.API.Models.csproj" />
     <ProjectReference Include="..\Journey.API.Services\Journey.API.Services.csproj" />
   </ItemGroup>
 

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Journey.API.Models\Journey.API.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -10,15 +10,15 @@ using System.Text;
 
 namespace LocationBus.API.Services.Concrete
 {
-    public class BusService : IBusService
+    public class BusService : ILocationBusService
     {
         private readonly IOptions<LocationBusApiSettings> _locationBusApiSettings;
         private readonly HttpClient _httpClient;
 
-        public BusService(IOptions<LocationBusApiSettings> obiletApiSettings, 
+        public BusService(IOptions<LocationBusApiSettings> locationBusApiSettings, 
             HttpClient httpClient)
         {
-            _locationBusApiSettings = obiletApiSettings;
+            _locationBusApiSettings = locationBusApiSettings;
             _httpClient = httpClient;
 
             _httpClient.BaseAddress = new Uri(_locationBusApiSettings.Value.BaseUrl);

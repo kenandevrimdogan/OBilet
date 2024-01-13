@@ -16,7 +16,7 @@ builder.Services.AddHttpClient();
 
 
 // Services
-builder.Services.AddScoped<IBusService, LocationBus.API.Services.Concrete.BusService>();
+builder.Services.AddScoped<ILocationBusService, LocationBus.API.Services.Concrete.BusService>();
 
 var app = builder.Build();
 

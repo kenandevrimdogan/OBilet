@@ -3,7 +3,7 @@ using LocationBus.API.Models.Response;
 
 namespace LocationBus.API.Infrastructure
 {
-    public interface IBusService
+    public interface ILocationBusService
     {
        Task<BusLocationResponseModel> GetBuslocationsAsync(BuslocationRequest request);
     }
