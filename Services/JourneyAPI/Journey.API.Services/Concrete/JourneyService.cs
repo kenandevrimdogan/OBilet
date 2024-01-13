@@ -2,7 +2,6 @@
 using LocationBus.API.Services.Settings;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Headers;
-using System.Text;
 
 namespace Journey.API.Services.Concrete
 {

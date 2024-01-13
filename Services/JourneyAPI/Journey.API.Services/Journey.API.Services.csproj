@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusService.API.Models\LocationBus.API.Models.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Journey.API.Infrastructure\Journey.API.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

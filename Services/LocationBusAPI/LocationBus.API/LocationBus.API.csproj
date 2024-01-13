@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusService.API.Infrastructure\LocationBus.API.Infrastructure.csproj" />
-    <ProjectReference Include="..\BusService.API.Models\LocationBus.API.Models.csproj" />
-    <ProjectReference Include="..\BusService.API.Services\LocationBus.API.Services.csproj" />
+    <ProjectReference Include="..\LocationBus.API.Infrastructure\LocationBus.API.Infrastructure.csproj" />
+    <ProjectReference Include="..\LocationBus.API.Models\LocationBus.API.Models.csproj" />
+    <ProjectReference Include="..\LocationBus.API.Services\LocationBus.API.Services.csproj" />
   </ItemGroup>
 
 </Project>
