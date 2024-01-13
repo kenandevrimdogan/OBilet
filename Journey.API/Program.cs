@@ -1,6 +1,4 @@
-
-using LocationBus.API.Infrastructure;
-using LocationBus.API.Services.Settings;
+using Journey.API.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +9,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<LocationBusApiSettings>(builder.Configuration.GetSection("LocationBusApiSettings"));
+builder.Services.Configure<LocationBus.API.Services.Settings.JourneyApiSettings>(builder.Configuration.GetSection("ObiletApiSettings"));
 builder.Services.AddHttpClient();
 
-
 // Services
-builder.Services.AddScoped<IBusService, LocationBus.API.Services.Concrete.BusService>();
+builder.Services.AddScoped<IJourneyService, Journey.API.Services.Concrete.JourneyService>();
 
 var app = builder.Build();
 
@@ -27,7 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

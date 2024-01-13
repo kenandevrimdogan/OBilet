@@ -12,17 +12,17 @@ namespace LocationBus.API.Services.Concrete
 {
     public class BusService : IBusService
     {
-        private readonly IOptions<ObiletApiSettings> _obiletApiSettings;
+        private readonly IOptions<LocationBusApiSettings> _locationBusApiSettings;
         private readonly HttpClient _httpClient;
 
-        public BusService(IOptions<ObiletApiSettings> obiletApiSettings, 
+        public BusService(IOptions<LocationBusApiSettings> obiletApiSettings, 
             HttpClient httpClient)
         {
-            _obiletApiSettings = obiletApiSettings;
+            _locationBusApiSettings = obiletApiSettings;
             _httpClient = httpClient;
 
-            _httpClient.BaseAddress = new Uri(_obiletApiSettings.Value.BaseUrl);
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "JEcYcEMyantZV095WVc3G2JtVjNZbWx1");
+            _httpClient.BaseAddress = new Uri(_locationBusApiSettings.Value.BaseUrl);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_locationBusApiSettings.Value.AuthorizationScheme, _locationBusApiSettings.Value.AuthorizationParameter);
         }
 
 
@@ -30,7 +30,7 @@ namespace LocationBus.API.Services.Concrete
         {
             var jsonBody = JsonConvert.SerializeObject(request);
 
-            var result = await _httpClient.PostAsync(_obiletApiSettings.Value.Getbuslocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
+            var result = await _httpClient.PostAsync(_locationBusApiSettings.Value.Getbuslocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
 
             var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
 

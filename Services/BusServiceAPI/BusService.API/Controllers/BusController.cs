@@ -16,8 +16,8 @@ namespace LocationBus.API.Controllers
             _busService = busService;
         }
 
-        [HttpGet("getBuslocations")]
-        public async Task<BusLocationResponseModel> GetbuslocationsAsync(BuslocationRequest request)
+        [HttpPost("getBuslocations")]
+        public async Task<BusLocationResponseModel> GetbuslocationsAsync([FromBody] BuslocationRequest request)
         {
             return await _busService.GetBuslocationsAsync(request);
         }

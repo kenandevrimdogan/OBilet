@@ -10,7 +10,19 @@
         }
       ],
       "UpstreamPathTemplate": "/api/{version}/bus/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/journey/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/journey/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ]
 }
