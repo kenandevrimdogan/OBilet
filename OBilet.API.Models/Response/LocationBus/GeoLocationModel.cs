@@ -1,4 +1,4 @@
-﻿namespace OBilet.API.Models.Response
+﻿namespace OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.BusLocation
 {
     public class GeoLocationModel
     {

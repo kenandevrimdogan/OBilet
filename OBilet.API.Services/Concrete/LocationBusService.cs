@@ -13,10 +13,10 @@ namespace OBilet.API.Services.Concrete
     public class LocationBusService: ILocationBusService
     {
 
-        private readonly IOptions<OBiletApiSettings> _oBiletApiSettings;
+        private readonly IOptions<OBiletClientApiSettings> _oBiletApiSettings;
         private readonly HttpClient _httpClient;
 
-        public LocationBusService(IOptions<OBiletApiSettings> oBiletApiSettings,
+        public LocationBusService(IOptions<OBiletClientApiSettings> oBiletApiSettings,
             HttpClient httpClient)
         {
             _oBiletApiSettings = oBiletApiSettings;
@@ -27,11 +27,11 @@ namespace OBilet.API.Services.Concrete
         }
 
 
-        public async Task<BusLocationResponseModel> GetBuslocationsAsync(BuslocationRequest request)
+        public async Task<BusLocationResponseModel> GetBusLocationsAsync(BuslocationRequest request)
         {
             var jsonBody = JsonConvert.SerializeObject(request);
 
-            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.Getbuslocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
+            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusLocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
 
             var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
 

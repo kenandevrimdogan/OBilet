@@ -1,6 +1,6 @@
 ﻿using LocationBus.API.Infrastructure;
-using LocationBus.API.Models.Request;
-using LocationBus.API.Models.Response;
+using LocationBus.API.Models.Request.OBiletClient;
+using LocationBus.API.Models.Response.OBiletClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocationBus.API.Controllers
@@ -9,17 +9,17 @@ namespace LocationBus.API.Controllers
     [ApiController]
     public class LocationBusController : ControllerBase
     {
-        private readonly ILocationBusService _busService;
+        private readonly ILocationBusService _locationBusService;
 
         public LocationBusController(ILocationBusService busService)
         {
-            _busService = busService;
+            _locationBusService = busService;
         }
 
-        [HttpPost("getBuslocations")]
-        public async Task<BusLocationResponseModel> GetbuslocationsAsync([FromBody] BuslocationRequest request)
+        [HttpPost("getBusLocations")]
+        public async Task<BusLocationResponseModel> GetBusLocationsAsync([FromBody] BuslocationRequest request)
         {
-            return await _busService.GetBuslocationsAsync(request);
+            return await _locationBusService.GetBuslocationsAsync(request);
         }
     }
 }

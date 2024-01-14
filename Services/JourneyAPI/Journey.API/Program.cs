@@ -1,4 +1,5 @@
 using Journey.API.Infrastructure;
+using Journey.API.Services.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<LocationBus.API.Services.Settings.JourneyApiSettings>(builder.Configuration.GetSection("ObiletApiSettings"));
+builder.Services.Configure<OBiletApiSettings>(builder.Configuration.GetSection("ObiletApiSettings"));
 builder.Services.AddHttpClient();
 
 // Services

@@ -1,10 +1,10 @@
 ﻿using Journey.API.Infrastructure;
-using Journey.API.Models.Request;
-using Journey.API.Models.Response;
-using LocationBus.API.Services.Settings;
+using Journey.API.Models.DTO;
+using Journey.API.Models.Request.OBiletClient;
+using Journey.API.Models.Response.OBiletClient;
+using Journey.API.Services.Settings;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 
@@ -12,24 +12,40 @@ namespace Journey.API.Services.Concrete
 {
     public class JourneyService : IJourneyService
     {
-        private readonly IOptions<JourneyApiSettings> _journeyApiSettings;
+        private readonly IOptions<OBiletApiSettings> _oBiletApiSettings;
         private readonly HttpClient _httpClient;
 
-        public JourneyService(IOptions<JourneyApiSettings> journeyApiSettings,
+        public JourneyService(IOptions<OBiletApiSettings> journeyApiSettings,
             HttpClient httpClient)
         {
-            _journeyApiSettings = journeyApiSettings;
+            _oBiletApiSettings = journeyApiSettings;
             _httpClient = httpClient;
 
-            _httpClient.BaseAddress = new Uri(_journeyApiSettings.Value.BaseUrl);
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_journeyApiSettings.Value.AuthorizationScheme, _journeyApiSettings.Value.AuthorizationParameter);
+            _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
         }
 
-        public async Task<JourneyResponse> GetbusjourneysAsync(JourneyRequest request)
+        public async Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request)
         {
-            var jsonbody = JsonConvert.SerializeObject(request);
+            var jsonbody = JsonConvert.SerializeObject(new JourneyDTO
+            {
+                data = new DataDTO
+                {
+                    departuredate = request.Data.DepartureDate.ToString(),
+                    destinationid = request.Data.DestinationId,
+                    originid = request.Data.OriginId
+                },
+                date = request.Date.ToString(),
+                devicesession = new DeviceSessionDTO
+                {
+                    deviceid = "",
+                    sessionid = ""
+                },
+                language = ""
+            });
 
-            var result = await _httpClient.PostAsync(_journeyApiSettings.Value.Getbusjourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
+            var payload = new StringContent(jsonbody, Encoding.UTF8, "application/json");
+
+            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, payload);
 
             var response = await result.Content.ReadFromJsonAsync<JourneyResponse>();
 

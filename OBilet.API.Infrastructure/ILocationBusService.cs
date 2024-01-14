@@ -5,6 +5,6 @@ namespace OBilet.API.Infrastructure
 {
     public interface ILocationBusService
     {
-        Task<BusLocationResponseModel> GetBuslocationsAsync(BuslocationRequest request);
+        Task<BusLocationResponseModel> GetBusLocationsAsync(BuslocationRequest request);
     }
 }

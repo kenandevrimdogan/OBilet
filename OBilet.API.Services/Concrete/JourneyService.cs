@@ -12,10 +12,10 @@ namespace OBilet.API.Services.Concrete
 {
     public class JourneyService: IJourneyService
     {
-        private readonly IOptions<OBiletApiSettings> _oBiletApiSettings;
+        private readonly IOptions<OBiletClientApiSettings> _oBiletApiSettings;
         private readonly HttpClient _httpClient;
 
-        public JourneyService(IOptions<OBiletApiSettings> oBiletApiSettings,
+        public JourneyService(IOptions<OBiletClientApiSettings> oBiletApiSettings,
             HttpClient httpClient)
         {
             _oBiletApiSettings = oBiletApiSettings;
@@ -25,11 +25,11 @@ namespace OBilet.API.Services.Concrete
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_oBiletApiSettings.Value.AuthorizationScheme, _oBiletApiSettings.Value.AuthorizationParameter);
         }
 
-        public async Task<JourneyResponse> GetbusjourneysAsync(JourneyRequest request)
+        public async Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request)
         {
             var jsonbody = JsonConvert.SerializeObject(request);
 
-            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.Getbusjourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
+            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
 
             var response = await result.Content.ReadFromJsonAsync<JourneyResponse>();
 

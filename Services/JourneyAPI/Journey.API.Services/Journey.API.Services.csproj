@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Journey.API.Infrastructure\Journey.API.Infrastructure.csproj" />
+    <ProjectReference Include="..\Journey.API.Models\Journey.API.Models.csproj" />
   </ItemGroup>
 
 </Project>

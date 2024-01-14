@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\JourneyAPI\Journey.API.Services\Journey.API.Services.csproj" />
     <ProjectReference Include="..\LocationBus.API.Infrastructure\LocationBus.API.Infrastructure.csproj" />
-    <ProjectReference Include="..\LocationBus.API.Models\LocationBus.API.Models.csproj" />
     <ProjectReference Include="..\LocationBus.API.Services\LocationBus.API.Services.csproj" />
   </ItemGroup>
 

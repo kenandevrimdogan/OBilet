@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.BusLocation;
 
 namespace OBilet.API.Models.Response
 {

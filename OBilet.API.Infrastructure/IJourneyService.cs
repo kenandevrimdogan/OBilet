@@ -5,6 +5,6 @@ namespace OBilet.API.Infrastructure
 {
     public interface IJourneyService
     {
-        Task<JourneyResponse> GetbusjourneysAsync(JourneyRequest request);
+        Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request);
     }
 }

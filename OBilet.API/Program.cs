@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<OBiletApiSettings>(builder.Configuration.GetSection("ObiletApiSettings"));
+builder.Services.Configure<OBiletClientApiSettings>(builder.Configuration.GetSection("ObiletApiSettings"));
 builder.Services.AddHttpClient();
 
 // Services

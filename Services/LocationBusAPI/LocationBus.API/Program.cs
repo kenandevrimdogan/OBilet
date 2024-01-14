@@ -1,6 +1,6 @@
-
+using Journey.API.Services.Settings;
 using LocationBus.API.Infrastructure;
-using LocationBus.API.Services.Settings;
+using LocationBus.API.Services.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<LocationBusApiSettings>(builder.Configuration.GetSection("LocationBusApiSettings"));
+builder.Services.Configure<OBiletApiSettings>(builder.Configuration.GetSection("OBiletApiSettings"));
+
 builder.Services.AddHttpClient();
 
-
 // Services
-builder.Services.AddScoped<ILocationBusService, LocationBus.API.Services.Concrete.BusService>();
+builder.Services.AddScoped<ILocationBusService, LocationBusService>();
 
 var app = builder.Build();
 

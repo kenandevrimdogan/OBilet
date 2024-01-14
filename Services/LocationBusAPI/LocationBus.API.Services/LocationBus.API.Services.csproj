@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LocationBus.API.Infrastructure\LocationBus.API.Infrastructure.csproj" />
-    <ProjectReference Include="..\LocationBus.API.Models\LocationBus.API.Models.csproj" />
   </ItemGroup>
 
 </Project>
