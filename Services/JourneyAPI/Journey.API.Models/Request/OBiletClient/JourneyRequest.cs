@@ -7,5 +7,7 @@
         public string Language { get; set; }
 
         public DataRequest Data { get; set; }
+
+        public DeviceSessionRequest DeviceSession { get; set; }
     }
 }

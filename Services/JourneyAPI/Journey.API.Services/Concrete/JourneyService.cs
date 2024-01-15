@@ -30,17 +30,17 @@ namespace Journey.API.Services.Concrete
             {
                 data = new DataDTO
                 {
-                    departuredate = request.Data.DepartureDate.ToString(),
+                    departuredate = request.Data.DepartureDate.ToString("yyyy-MM-dd"),
                     destinationid = request.Data.DestinationId,
                     originid = request.Data.OriginId
                 },
                 date = request.Date.ToString(),
                 devicesession = new DeviceSessionDTO
                 {
-                    deviceid = "",
-                    sessionid = ""
+                    deviceid = request.DeviceSession.DeviceId,
+                    sessionid = request.DeviceSession.SessionId
                 },
-                language = ""
+                language = request.Language
             });
 
             var payload = new StringContent(jsonbody, Encoding.UTF8, "application/json");

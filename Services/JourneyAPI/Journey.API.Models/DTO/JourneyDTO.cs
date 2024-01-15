@@ -5,7 +5,6 @@ namespace Journey.API.Models.DTO
 {
     public class JourneyDTO
     {
-        [JsonProperty("device-session")]
         public DeviceSessionDTO devicesession { get; set; }
 
         public string date { get; set; }
