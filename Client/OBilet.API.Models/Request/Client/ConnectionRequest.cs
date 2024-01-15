@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OBilet.API.Models.Request
+namespace OBilet.API.Models.Request.Client
 {
     public class ConnectionRequest
     {

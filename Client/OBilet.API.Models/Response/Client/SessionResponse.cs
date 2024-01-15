@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace OBilet.API.Models.Response
+namespace OBilet.API.Models.Response.Client
 {
-    public class AuthResponse
+    public class SessionResponse
     {
         public string status { get; set; }
-        public AuthDataResponse data { get; set; }
+        public SessionDataResponse data { get; set; }
         public object message { get; set; }
 
         [JsonProperty("user-message")]

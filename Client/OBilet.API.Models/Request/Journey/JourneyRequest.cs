@@ -11,6 +11,6 @@ namespace OBilet.API.Models.Request
 
         public string language { get; set; }
 
-        public DataRequest data { get; set; }
+        public JourneyDataRequest? data { get; set; }
     }
 }

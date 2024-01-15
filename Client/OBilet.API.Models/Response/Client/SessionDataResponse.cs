@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OBilet.API.Models.Response
+namespace OBilet.API.Models.Response.Client
 {
-    public class AuthDataResponse
+    public class SessionDataResponse
     {
         [JsonProperty("session-id")]
         public string sessionid { get; set; }

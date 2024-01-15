@@ -1,4 +1,4 @@
-﻿namespace OBilet.API.Models.Request
+﻿namespace OBilet.API.Models.Request.Client
 {
     public class BrowserRequest
     {

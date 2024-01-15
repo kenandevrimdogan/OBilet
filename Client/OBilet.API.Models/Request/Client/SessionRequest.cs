@@ -1,6 +1,6 @@
-﻿namespace OBilet.API.Models.Request
+﻿namespace OBilet.API.Models.Request.Client
 {
-    public class AuthRequest
+    public class SessionRequest
     {
         public int type { get; set; }
 
