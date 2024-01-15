@@ -4,7 +4,7 @@ namespace OBilet.API.Models.Request
 {
     public class BuslocationRequest
     {
-        public object? data { get; set; }
+        public string? data { get; set; }
 
 
         [JsonProperty("device-session")]

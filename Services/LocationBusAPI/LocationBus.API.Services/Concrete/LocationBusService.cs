@@ -12,16 +12,16 @@ namespace LocationBus.API.Services.Concrete
 {
     public class LocationBusService : ILocationBusService
     {
-        private readonly IOptions<OBiletApiSettings> _locationBusApiSettings;
+        private readonly IOptions<OBiletApiSettings> _oBiletApiSettings;
         private readonly HttpClient _httpClient;
 
-        public LocationBusService(IOptions<OBiletApiSettings> locationBusApiSettings, 
+        public LocationBusService(IOptions<OBiletApiSettings> oBiletApiSettings, 
             HttpClient httpClient)
         {
-            _locationBusApiSettings = locationBusApiSettings;
+            _oBiletApiSettings = oBiletApiSettings;
             _httpClient = httpClient;
 
-            _httpClient.BaseAddress = new Uri(_locationBusApiSettings.Value.BaseUrl);
+            _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
         }
 
 
@@ -30,18 +30,18 @@ namespace LocationBus.API.Services.Concrete
             var jsonBody = JsonConvert.SerializeObject(new BuslocationDTO
             {
                 data = request.Data,
-                date = request.Date.ToString(),
+                date = request.Date.ToString("yyyy-MM-ddTHH:mm:ss"),
                 devicesession = new DeviceSessionDTO
                 {
-                    deviceid = "",
-                    sessionid = "",
+                    deviceid = request.DeviceSession.DeviceId,
+                    sessionid = request.DeviceSession.SessionId,
                 },
-                language = ""
+                language = request.Language
             });
 
             var payload = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
-            var result = await _httpClient.PostAsync(_locationBusApiSettings.Value.GetBuslocations, payload);
+            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBuslocations, payload);
 
             var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
 

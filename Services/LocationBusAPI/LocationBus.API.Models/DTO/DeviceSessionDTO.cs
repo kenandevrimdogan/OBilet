@@ -4,10 +4,8 @@ namespace LocationBus.API.Models.DTO
 {
     public class DeviceSessionDTO
     {
-        [JsonProperty("session-id")]
         public string sessionid { get; set; }
 
-        [JsonProperty("device-id")]
         public string deviceid { get; set; }
     }
 }

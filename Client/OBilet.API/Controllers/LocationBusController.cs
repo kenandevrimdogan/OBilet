@@ -9,17 +9,17 @@ namespace OBilet.API.Controllers
     [ApiController]
     public class LocationBusController : ControllerBase
     {
-        private readonly ILocationBusService _busService;
+        private readonly ILocationBusService _locationBusService;
 
-        public LocationBusController(ILocationBusService busService)
+        public LocationBusController(ILocationBusService locationBusService)
         {
-            _busService = busService;
+            _locationBusService = locationBusService;
         }
 
         [HttpPost("getBuslocations")]
         public async Task<BusLocationResponseModel> GetBusLocationsAsync([FromBody] BuslocationRequest request)
         {
-            return await _busService.GetBusLocationsAsync(request);
+            return await _locationBusService.GetBusLocationsAsync(request);
         }
     }
 }

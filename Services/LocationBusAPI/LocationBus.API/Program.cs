@@ -1,6 +1,6 @@
-using Journey.API.Services.Settings;
 using LocationBus.API.Infrastructure;
 using LocationBus.API.Services.Concrete;
+using LocationBus.API.Services.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
