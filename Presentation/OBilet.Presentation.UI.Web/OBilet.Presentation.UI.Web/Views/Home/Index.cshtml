@@ -1,0 +1,60 @@
+﻿@model GetBusLocationViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <div style="background-color:#2F4EB4" class="p-4"></div>
+
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="row">
+                @using (Html.BeginForm("Index", "Journey", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.DisplayNameFor(x=> x.OriginId)
+                            @Html.TextBoxFor(x=> x.OriginId, new {@class = "form-control", @placeholder="İstanbul Avrupa"})
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.DisplayNameFor(x=> x.DestinationId)
+                            @Html.TextBoxFor(x=> x.DestinationId, new {@class = "form-control", @placeholder="Ankara"})
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.DisplayNameFor(x=> x.DepartureDate)
+                            <input type="date" name="@Html.NameFor(x=> x.DepartureDate)" id="DepartureDate" value="@Model.DepartureDate.ToString("yyyy-MM-dd")" class="form-control" />
+
+                            <br />
+                            <button type="button" class="btn btn-primary" id="buttonToday">Bugün</button>
+                            <button type="button" class="btn btn-primary" id="buttonTomorrow">Yarın</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center p-2">
+                        <button type="submit" class="btn btn-primary" id="searchForm">Biletini Bul</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blan
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/indexpage.js" asp-append-version="true"></script>
+}
