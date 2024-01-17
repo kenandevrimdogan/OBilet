@@ -7,6 +7,18 @@
 <div class="container">
     <div style="background-color:#2F4EB4" class="p-4"></div>
 
+    @if (Model.IsError.HasValue && Model.IsError == true)
+    {
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach (var text in Model.ErrorMessages)
+                {
+                    <li>@text</li>
+                }
+            </ul>
+        </div>
+    }
+
 
     <div class="row mt-2">
         <div class="col-12">
@@ -30,7 +42,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             @Html.DisplayNameFor(x=> x.DepartureDate)
-                            <input type="date" name="@Html.NameFor(x=> x.DepartureDate)" id="DepartureDate" value="@Model.DepartureDate.ToString("yyyy-MM-dd")" class="form-control" />
+                            <input type="date" name="@Html.NameFor(x=> x.DepartureDate)" id="DepartureDate" value="@Model.DepartureDate.Value.ToString("yyyy-MM-dd")" class="form-control" />
 
                             <br />
                             <button type="button" class="btn btn-primary" id="buttonToday">Bugün</button>

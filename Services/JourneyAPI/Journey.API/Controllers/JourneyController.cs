@@ -1,5 +1,6 @@
 ﻿using Journey.API.Infrastructure;
 using Journey.API.Models.Request.OBiletClient;
+using Journey.API.Models.Response;
 using Journey.API.Models.Response.OBiletClient;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace Journey.API.Controllers
         }
 
         [HttpPost("getBusJourneys")]
-        public async Task<JourneyResponse> GetbusjourneysAsync([FromBody] JourneyRequest request)
+        public async Task<Result<JourneyResponse>> GetbusjourneysAsync([FromBody] JourneyRequest request)
         {
             return await _journeyService.GetBusJourneysAsync(request);
         }

@@ -1,6 +1,7 @@
 ﻿using Journey.API.Infrastructure;
 using Journey.API.Models.DTO;
 using Journey.API.Models.Request.OBiletClient;
+using Journey.API.Models.Response;
 using Journey.API.Models.Response.OBiletClient;
 using Journey.API.Services.Settings;
 using Microsoft.Extensions.Options;
@@ -24,13 +25,33 @@ namespace Journey.API.Services.Concrete
             _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
         }
 
-        public async Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request)
+        public async Task<Result<JourneyResponse>> GetBusJourneysAsync(JourneyRequest request)
         {
+            var response = new Result<JourneyResponse>();
+
+            if(request.Data.DestinationId == request.Data.OriginId)
+            {
+                response.IsError = true;
+                response.ErrorMessages.Add("Aynı konumu hem köken hem de varış olarak seçemez");
+            }
+
+            if (request.Data.DepartureDate.Value.Date < DateTime.Now.Date)
+            {
+                response.IsError = true;
+                response.ErrorMessages.Add("Kalkış tarihi için geçerli minimum tarih bugündür.");
+            }
+
+            if (response.IsError == true)
+            {
+                return response;
+            }
+
+
             var jsonbody = JsonConvert.SerializeObject(new JourneyDTO
             {
                 data = new DataDTO
                 {
-                    departuredate = request.Data.DepartureDate.ToString("yyyy-MM-dd"),
+                    departuredate = request.Data.DepartureDate?.ToString("yyyy-MM-dd"),
                     destinationid = request.Data.DestinationId,
                     originid = request.Data.OriginId
                 },
@@ -47,7 +68,8 @@ namespace Journey.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, payload);
 
-            var response = await result.Content.ReadFromJsonAsync<JourneyResponse>();
+            response.Data = await result.Content.ReadFromJsonAsync<JourneyResponse>();
+            response.Data.Data = response.Data.Data.OrderBy(x => x.Journey.Departure).ThenBy(x=> x.Journey.Arrival).ToList();
 
             return response;
         }

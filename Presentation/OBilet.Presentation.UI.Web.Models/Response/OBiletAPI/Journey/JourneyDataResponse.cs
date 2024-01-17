@@ -2,54 +2,42 @@
 {
     public class JourneyDataResponse
     {
-        public string kind { get; set; }
+        public string Kind { get; set; }
+        public string Code { get; set; }
+        public List<StopResponse> Stops { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
+        public DateTime Departure { get; set; }
+        public DateTime Arrival { get; set; }
+        public string Currency { get; set; }
+        public string Duration { get; set; }
 
-        public string code { get; set; }
+        public double OriginalPrice { get; set; }
 
-        public List<StopResponse> stops { get; set; }
+        public double InternetPrice { get; set; }
 
-        public string origin { get; set; }
+        public double? ProviderInternetPrice { get; set; }
 
-        public string destination { get; set; }
+        public object Booking { get; set; }
 
-        public DateTime departure { get; set; }
+        public string BusName { get; set; }
+        public PolicyResponse Policy { get; set; }
+        public List<string> Features { get; set; }
+        public string Description { get; set; }
+        public object Available { get; set; }
 
-        public DateTime arrival { get; set; }
+        public object PartnerProviderCode { get; set; }
 
-        public string currency { get; set; }
+        public object PeronNo { get; set; }
 
-        public string duration { get; set; }
+        public object PartnerProviderId { get; set; }
 
-        public double originalprice { get; set; }
+        public bool IsSegmented { get; set; }
 
-        public double internetprice { get; set; }
+        public object PartnerName { get; set; }
 
-        public double? providerinternetprice { get; set; }
+        public object ProviderCode { get; set; }
 
-        public object booking { get; set; }
-
-        public string busname { get; set; }
-
-        public PolicyResponse policy { get; set; }
-
-        public List<string> features { get; set; }
-
-        public string description { get; set; }
-
-        public object available { get; set; }
-
-        public object partnerprovidercode { get; set; }
-
-        public object peronno { get; set; }
-
-        public object partnerproviderid { get; set; }
-
-        public bool issegmented { get; set; }
-
-        public object partnername { get; set; }
-
-        public object providercode { get; set; }
-
-        public double sortingprice { get; set; }
+        public double SortingPrice { get; set; }
     }
 }

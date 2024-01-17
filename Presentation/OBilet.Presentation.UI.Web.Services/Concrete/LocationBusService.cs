@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using OBilet.Presentation.UI.Web.Infrastructure;
 using OBilet.Presentation.UI.Web.Models.Request.OBiletAPI.BusLocation;
+using OBilet.Presentation.UI.Web.Models.Response;
 using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.BusLocation;
 using OBilet.Presentation.UI.Web.Services.Settings;
 using System.Net.Http.Json;
@@ -25,13 +26,13 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
         }
 
 
-        public async Task<BusLocationResponse> GetBusLocationsAsync(BuslocationRequest request)
+        public async Task<Result<BusLocationResponse>> GetBusLocationsAsync(BuslocationRequest request)
         {
             var jsonBody = JsonConvert.SerializeObject(request);
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusLocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
 
-            var response = await result.Content.ReadFromJsonAsync<BusLocationResponse>();
+            var response = await result.Content.ReadFromJsonAsync<Result<BusLocationResponse>>();
 
             return response;
         }

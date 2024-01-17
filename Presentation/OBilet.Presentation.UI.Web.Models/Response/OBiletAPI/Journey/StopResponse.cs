@@ -2,22 +2,17 @@
 {
     public class StopResponse
     {
-        public int id { get; set; }
+        public int Id { get; set; }
+        public int? KolayCarLocationId { get; set; }
+        public string Name { get; set; }
+        public string Station { get; set; }
+        public DateTime? Time { get; set; }
 
-        public int? kolayCarLocationId { get; set; }
+        public bool IsOrigin { get; set; }
 
-        public string name { get; set; }
+        public bool IsDestination { get; set; }
 
-        public string station { get; set; }
-
-        public DateTime? time { get; set; }
-
-        public bool isorigin { get; set; }
-
-        public bool isdestination { get; set; }
-
-        public bool issegmentstop { get; set; }
-
-        public int index { get; set; }
+        public bool IsSegmentStop { get; set; }
+        public int Index { get; set; }
     }
 }

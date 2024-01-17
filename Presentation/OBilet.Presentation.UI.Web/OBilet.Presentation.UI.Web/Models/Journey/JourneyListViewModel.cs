@@ -1,12 +1,12 @@
-﻿using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Journey;
-using System;
+﻿using OBilet.Presentation.UI.Web.Models.Response;
+using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Journey;
 using System.Globalization;
 
 namespace OBilet.Presentation.UI.Web.Models.Journey
 {
     public class JourneyListViewModel
     {
-        public JourneyResponse JourneyResponse { get; set; }
+        public Result<JourneyResponse> JourneyResponse { get; set; }
 
         public DateTime DepartureDate { get; set; }
 

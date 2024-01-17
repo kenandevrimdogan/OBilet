@@ -15,7 +15,11 @@ namespace OBilet.Presentation.UI.Web.Models.Home
 
         [DisplayName("Tarih")]
         [Required]
-        public DateTime DepartureDate { get; set; }
-    
+        public DateTime? DepartureDate { get; set; }
+
+        public bool? IsError { get; set; }
+
+        public List<string> ErrorMessages { get; set; } = new List<string>();
+
     }
 }

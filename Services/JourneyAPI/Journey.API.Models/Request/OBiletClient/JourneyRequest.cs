@@ -9,5 +9,6 @@
         public DataRequest Data { get; set; }
 
         public DeviceSessionRequest DeviceSession { get; set; }
+
     }
 }

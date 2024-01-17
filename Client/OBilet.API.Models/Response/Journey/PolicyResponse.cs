@@ -14,7 +14,7 @@ namespace OBilet.API.Models.Response
         public int? MaxSingleMales { get; set; }
 
         [JsonProperty("max-single-females")]
-        public int MaxSingleFemales { get; set; }
+        public int? MaxSingleFemales { get; set; }
 
         [JsonProperty("mixed-genders")]
         public bool MixedGenders { get; set; }

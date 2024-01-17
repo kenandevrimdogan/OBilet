@@ -5,14 +5,14 @@ namespace OBilet.API.Models.Request
     public class JourneyDataRequest
     {
         [JsonProperty("origin-id")]
-        public int? originid { get; set; }
+        public int? OriginId { get; set; }
 
 
         [JsonProperty("destination-id")]
-        public int? destinationid { get; set; }
+        public int? DestinationId { get; set; }
 
 
         [JsonProperty("departure-date")]
-        public string? departuredate { get; set; }
+        public string? DepartureDate { get; set; }
     }
 }

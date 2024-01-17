@@ -1,21 +1,17 @@
-﻿using Newtonsoft.Json;
-
+﻿
 namespace Journey.API.Models.Response.OBiletClient
 {
     public class FeatureResponse
     {
-        public int id { get; set; }
-        public int? priority { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public int Id { get; set; }
+        public int? Priority { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        [JsonProperty("is-promoted")]
-        public bool ispromoted { get; set; }
+        public bool IsPromoted { get; set; }
 
-        [JsonProperty("back-color")]
-        public string backcolor { get; set; }
+        public string BackColor { get; set; }
 
-        [JsonProperty("fore-color")]
-        public string forecolor { get; set; }
+        public string ForeColor { get; set; }
     }
 }

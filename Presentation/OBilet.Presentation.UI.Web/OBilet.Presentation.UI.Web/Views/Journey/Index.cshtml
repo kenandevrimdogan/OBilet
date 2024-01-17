@@ -1,4 +1,5 @@
-﻿@model JourneyListViewModel
+﻿@using OBilet.Presentation.UI.Web.Services.Extension
+@model JourneyListViewModel
 
 
 <div clas="container">
@@ -7,7 +8,7 @@
             <div class="text-center text-white">
                   <h3>
                       <a href="@Url.Action("Index", "Home")" class="text-start" style="float:left; color:white;">Geri</a>
-                      <span>@Model.JourneyResponse.data.FirstOrDefault().originlocation - @Model.JourneyResponse.data.FirstOrDefault().destinationlocation</span>
+                      <span>@Model.JourneyResponse.Data.Data.FirstOrDefault().OriginLocation - @Model.JourneyResponse.Data.Data.FirstOrDefault().DestinationLocation</span>
                     </h3>
                  <p>@Model.DepartureDateText</p>
             </div>
@@ -15,7 +16,7 @@
 
         <div class="card-body">
             <div class="list-group">
-                @foreach (var item in Model.JourneyResponse.data)
+                @foreach (var item in Model.JourneyResponse.Data.Data)
                 {
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="col-12">
@@ -31,23 +32,23 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h6 style="color:#192289">@item.journey.departure.ToShortTimeString()</h6>
+                                    <h6 style="color:#192289">@item.Journey.Departure.ToShortTimeString()</h6>
                                 </div>
 
                                 <div class="col-3">
-                                    <h6 style="color:#192289">@item.journey.arrival.ToShortTimeString()</h6>
+                                    <h6 style="color:#192289">@item.Journey.Arrival.ToShortTimeString()</h6>
                                 </div>
 
                                 <div class="col-3">
                                     <div class="badge text-wrap" style="background-color:#d23b38">
-                                        @item.journey.providerinternetprice @item.journey.currency
+                                        @item.Journey.InternetPrice.TurkishLiraWithoutCurrency() @item.Journey.Currency
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        <small>@item.journey.origin - @item.journey.destination</small>
+                        <small>@item.Journey.Origin - @item.Journey.Destination</small>
                     </a>
                 }
             </div>

@@ -1,4 +1,4 @@
-﻿namespace LocationBus.API.Models.Response.OBiletClient
+﻿namespace OBilet.Presentation.UI.Web.Models.LocationBus
 {
     public class Datum
     {

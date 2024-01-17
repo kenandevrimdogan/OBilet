@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OBilet.Presentation.UI.Web.Infrastructure;
-using OBilet.Presentation.UI.Web.Models;
 using OBilet.Presentation.UI.Web.Models.Home;
-using System.Diagnostics;
+using OBilet.Presentation.UI.Web.Models.LocationBus;
+using OBilet.Presentation.UI.Web.Models.Request.OBiletAPI.BusLocation;
+using OBilet.Presentation.UI.Web.Models.Response;
 
 namespace OBilet.Presentation.UI.Web.Controllers
 {
@@ -16,16 +17,23 @@ namespace OBilet.Presentation.UI.Web.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index([FromQuery]GetBusLocationViewModel request)
         {
-            var viewModel = new GetBusLocationViewModel
+            if (!request.DepartureDate.HasValue)
             {
-                DestinationId = 1,
-                DepartureDate = DateTime.Now.AddDays(1)
-            };
+                request.DepartureDate = DateTime.Now;
+            }
 
-            return View(viewModel);
+            return View(request);
         }
-    
+
+        [HttpPost("getBusLocations")]
+        public async Task<IActionResult> GetBusLocationsAsync([FromBody] BuslocationRequest request)
+        {
+            var result = await _locationBusService.GetBusLocationsAsync(request);
+
+            return Json(result);
+        }
+
     }
 }

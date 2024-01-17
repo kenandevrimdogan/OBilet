@@ -1,26 +1,19 @@
-﻿using Newtonsoft.Json;
-
-namespace Journey.API.Models.Response.OBiletClient
+﻿namespace Journey.API.Models.Response.OBiletClient
 {
     public class PolicyResponse
     {
-        [JsonProperty("max-seats")]
-        public object maxseats { get; set; }
+        public object MaxSeats { get; set; }
 
-        [JsonProperty("max-single")]
-        public int? maxsingle { get; set; }
+        public int? MaxSingle { get; set; }
 
-        [JsonProperty("max-single-males")]
-        public int? maxsinglemales { get; set; }
+        public int? MaxSingleMales { get; set; }
 
-        [JsonProperty("max-single-females")]
-        public int maxsinglefemales { get; set; }
+        public int? MaxSingleFemales { get; set; }
 
-        [JsonProperty("mixed-genders")]
-        public bool mixedgenders { get; set; }
+        public bool MixedGenders { get; set; }
 
-        [JsonProperty("gov-id")]
-        public bool govid { get; set; }
-        public bool lht { get; set; }
+        public bool GovId { get; set; }
+
+        public bool Lht { get; set; }
     }
 }

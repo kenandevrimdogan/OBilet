@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using OBilet.Presentation.UI.Web.Infrastructure;
 using OBilet.Presentation.UI.Web.Models.Request.OBiletAPI.Journey;
+using OBilet.Presentation.UI.Web.Models.Response;
 using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Journey;
 using OBilet.Presentation.UI.Web.Services.Settings;
 using System.Net.Http.Json;
@@ -23,10 +24,10 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
             _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
         }
 
-        public async Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request)
+        public async Task<Result<JourneyResponse>> GetBusJourneysAsync(JourneyRequest request)
         {
             request.Data.OriginId = 349;
-            request.Data.DestinationId = 356;
+            request.Data.DestinationId = 349;
             request.DeviceSession = new DeviceSessionRequest
             {
                 deviceid = "DKMHoF/ilAZxShoqWY7CQsdwcj+O2KLrECp2THDyOTM=",
@@ -37,7 +38,7 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
 
-            var response = await result.Content.ReadFromJsonAsync<JourneyResponse>();
+            var response = await result.Content.ReadFromJsonAsync<Result<JourneyResponse>>();
 
             return response;
         }

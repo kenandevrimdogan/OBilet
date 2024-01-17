@@ -2,18 +2,18 @@
 {
     public class PolicyResponse
     {
-        public object maxseats { get; set; }
+        public object MaxSeats { get; set; }
 
-        public int? maxsingle { get; set; }
+        public int? MaxSingle { get; set; }
 
-        public int? maxsinglemales { get; set; }
+        public int? MaxSingleMales { get; set; }
 
-        public int maxsinglefemales { get; set; }
+        public int? MaxSingleFemales { get; set; }
 
-        public bool mixedgenders { get; set; }
+        public bool MixedGenders { get; set; }
 
-        public bool govid { get; set; }
+        public bool GovId { get; set; }
 
-        public bool lht { get; set; }
+        public bool Lht { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using LocationBus.API.Infrastructure;
 using LocationBus.API.Models.DTO;
 using LocationBus.API.Models.Request.OBiletClient;
+using LocationBus.API.Models.Response;
 using LocationBus.API.Models.Response.OBiletClient;
 using LocationBus.API.Services.Settings;
 using Microsoft.Extensions.Options;
@@ -25,7 +26,7 @@ namespace LocationBus.API.Services.Concrete
         }
 
 
-        public async Task<BusLocationResponseModel> GetBuslocationsAsync(BuslocationRequest request)
+        public async Task<Result<BusLocationResponseModel>> GetBuslocationsAsync(BuslocationRequest request)
         {
             var jsonBody = JsonConvert.SerializeObject(new BuslocationDTO
             {
@@ -43,7 +44,7 @@ namespace LocationBus.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBuslocations, payload);
 
-            var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
+            var response = await result.Content.ReadFromJsonAsync<Result<BusLocationResponseModel>>();
 
             return response;
         }

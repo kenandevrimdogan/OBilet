@@ -29,6 +29,10 @@ namespace OBilet.Presentation.UI.Web.Controllers
                 }
             });
 
+            if (busJourneyResult.IsError)
+            {
+                return RedirectToAction("Index", "Home", new { IsError = busJourneyResult.IsError, ErrorMessages = busJourneyResult.ErrorMessages });
+            }
 
             var viewModel = new JourneyListViewModel
             {

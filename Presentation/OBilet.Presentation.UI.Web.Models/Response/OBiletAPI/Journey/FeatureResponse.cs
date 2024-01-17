@@ -1,19 +1,17 @@
-﻿namespace OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Journey
+﻿
+namespace OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Journey
 {
     public class FeatureResponse
     {
-        public int id { get; set; }
+        public int Id { get; set; }
+        public int? Priority { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public int? priority { get; set; }
+        public bool IsPromoted { get; set; }
 
-        public string name { get; set; }
+        public string BackColor { get; set; }
 
-        public string description { get; set; }
-
-        public bool ispromoted { get; set; }
-
-        public string backcolor { get; set; }
-
-        public string forecolor { get; set; }
+        public string ForeColor { get; set; }
     }
 }
