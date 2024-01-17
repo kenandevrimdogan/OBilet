@@ -5,7 +5,6 @@ using OBilet.API.Models.Request;
 using OBilet.API.Models.Response;
 using OBilet.API.Services.Settings;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace OBilet.API.Services.Concrete
@@ -31,7 +30,7 @@ namespace OBilet.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
 
-            var response = await result.Content.ReadFromJsonAsync<JourneyResponse>();
+            var response = JsonConvert.DeserializeObject<JourneyResponse>(await result.Content.ReadAsStringAsync());
 
             return response;
         }

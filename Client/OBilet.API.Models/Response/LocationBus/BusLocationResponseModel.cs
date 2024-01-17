@@ -4,34 +4,27 @@ namespace OBilet.API.Models.Response
 {
     public class BusLocationResponseModel
     {
-        public string status { get; set; }
-
-        public List<Datum> data { get; set; }
-
-        public object message { get; set; }
-
+        public string Status { get; set; }
+        public List<Datum> Data { get; set; }
+        public object Message { get; set; }
 
         [JsonProperty("user-message")]
-        public object usermessage { get; set; }
-
+        public object UserMessage { get; set; }
 
         [JsonProperty("api-request-id")]
-        public object apirequestid { get; set; }
+        public object ApiRequestId { get; set; }
 
-        public string controller { get; set; }
-
+        public string Controller { get; set; }
 
         [JsonProperty("client-request-id")]
-        public object clientrequestid { get; set; }
-
+        public object ClientRequestId { get; set; }
 
         [JsonProperty("web-correlation-id")]
-        public object webcorrelationid { get; set; }
-
+        public object WebCorrelationId { get; set; }
 
         [JsonProperty("correlation-id")]
-        public string correlationid { get; set; }
+        public string CorrelationId { get; set; }
 
-        public object parameters { get; set; }
+        public object Parameters { get; set; }
     }
 }

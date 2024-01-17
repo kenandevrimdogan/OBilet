@@ -4,25 +4,34 @@ namespace OBilet.API.Models.Response
 {
     public class JourneyResponse
     {
-        public string status { get; set; }
-        public List<DatumResponse> data { get; set; }
-        public object message { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("data")]
+        public List<BusJourneyResponse> Data { get; set; }
+
+        [JsonProperty("message")]
+        public object Message { get; set; }
 
         [JsonProperty("user-message")]
-        public object usermessage { get; set; }
+        public object UserMessage { get; set; }
 
         [JsonProperty("api-request-id")]
-        public object apirequestid { get; set; }
-        public string controller { get; set; }
+        public object ApiRequestId { get; set; }
+
+        [JsonProperty("controller")]
+        public string Controller { get; set; }
 
         [JsonProperty("client-request-id")]
-        public object clientrequestid { get; set; }
+        public object ClientRequestId { get; set; }
 
         [JsonProperty("web-correlation-id")]
-        public object webcorrelationid { get; set; }
+        public object WebCorrelationId { get; set; }
 
         [JsonProperty("correlation-id")]
-        public string correlationid { get; set; }
-        public object parameters { get; set; }
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("Parameters")]
+        public object Parameters { get; set; }
     }
 }

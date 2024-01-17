@@ -5,72 +5,61 @@ namespace OBilet.API.Models.Response
 {
     public class Datum
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("parent-id")]
-        public int parentid { get; set; }
+        public int ParentId { get; set; }
 
-        public string type { get; set; }
-
-        public string name { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("geo-location")]
-        public GeoLocationModel geolocation { get; set; }
+        public GeoLocationModel GeoLocation { get; set; }
 
-        public int zoom { get; set; }
+        public int Zoom { get; set; }
 
         [JsonProperty("tz-code")]
-        public string tzcode { get; set; }
-
+        public string TzCode { get; set; }
 
         [JsonProperty("weather-code")]
-        public object weathercode { get; set; }
+        public object WeatherCode { get; set; }
 
-        public int rank { get; set; }
-
+        public int Rank { get; set; }
 
         [JsonProperty("reference-code")]
-        public string referencecode { get; set; }
-
+        public string ReferenceCode { get; set; }
 
         [JsonProperty("city-id")]
-        public int cityid { get; set; }
-
+        public int CityId { get; set; }
 
         [JsonProperty("reference-country")]
-        public object referencecountry { get; set; }
-
+        public object ReferenceCountry { get; set; }
 
         [JsonProperty("country-id")]
-        public int countryid { get; set; }
+        public int CountryId { get; set; }
 
-        public string keywords { get; set; }
-
+        public string Keywords { get; set; }
 
         [JsonProperty("city-name")]
-        public string cityname { get; set; }
+        public string CityName { get; set; }
 
-        public object languages { get; set; }
+        public object Languages { get; set; }
 
         [JsonProperty("country-name")]
-        public string countryname { get; set; }
+        public string CountryName { get; set; }
 
-        public object code { get; set; }
-
+        public object Code { get; set; }
 
         [JsonProperty("show-country")]
-        public bool showcountry { get; set; }
-
+        public bool ShowCountry { get; set; }
 
         [JsonProperty("area-code")]
-        public object areacode { get; set; }
-
+        public object AreaCode { get; set; }
 
         [JsonProperty("long-name")]
-        public string longname { get; set; }
-
+        public string LongName { get; set; }
 
         [JsonProperty("is-city-center")]
-        public bool iscitycenter { get; set; }
+        public bool IsCityCenter { get; set; }
     }
 }

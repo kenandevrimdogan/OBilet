@@ -33,7 +33,7 @@ namespace OBilet.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusLocations, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
 
-            var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
+            var response = JsonConvert.DeserializeObject<BusLocationResponseModel>(await result.Content.ReadAsStringAsync());
 
             return response;
         }
