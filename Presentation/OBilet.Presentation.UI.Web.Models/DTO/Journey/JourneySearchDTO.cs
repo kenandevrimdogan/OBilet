@@ -2,10 +2,10 @@
 {
     public class JourneySearchDTO
     {
-        public int? OriginId { get; set; }
+        public int OriginId { get; set; } = 349;
 
-        public int? DestinationId { get; set; }
+        public int DestinationId { get; set; } = 356;
 
-        public DateTime DepartureDate { get; set; }
+        public DateTime DepartureDate { get; set; } = DateTime.Now;
     }
 }

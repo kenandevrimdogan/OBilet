@@ -25,6 +25,14 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
 
         public async Task<JourneyResponse> GetBusJourneysAsync(JourneyRequest request)
         {
+            request.Data.OriginId = 349;
+            request.Data.DestinationId = 356;
+            request.DeviceSession = new DeviceSessionRequest
+            {
+                deviceid = "DKMHoF/ilAZxShoqWY7CQsdwcj+O2KLrECp2THDyOTM=",
+                sessionid = "vvg5DL2VPFCcL8ybGQHKtJ2p9PA9VVbBJy9nEi/18VM="
+            };
+
             var jsonbody = JsonConvert.SerializeObject(request);
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));

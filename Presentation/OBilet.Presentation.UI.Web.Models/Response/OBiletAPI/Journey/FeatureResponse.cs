@@ -4,7 +4,7 @@
     {
         public int id { get; set; }
 
-        public int priority { get; set; }
+        public int? priority { get; set; }
 
         public string name { get; set; }
 

@@ -1,15 +1,21 @@
-﻿
+﻿@model JourneyListViewModel
+
 
 <div clas="container">
     <div class="card">
-        <div class="card-header text-center text-white" style="background-color:#2F4EB4; height: 72pt">
-            <h3>İstanbul Avrupa - Ankara</h3>
-            <p>25 Ekim Perşembe</p>
+        <div class="card-header " style="background-color:#2F4EB4; height: 72pt">
+            <div class="text-center text-white">
+                  <h3>
+                      <a href="@Url.Action("Index", "Home")" class="text-start" style="float:left; color:white;">Geri</a>
+                      <span>@Model.JourneyResponse.data.FirstOrDefault().originlocation - @Model.JourneyResponse.data.FirstOrDefault().destinationlocation</span>
+                    </h3>
+                 <p>@Model.DepartureDateText</p>
+            </div>
         </div>
 
         <div class="card-body">
             <div class="list-group">
-                @for (var i = 0; i < 10; i++)
+                @foreach (var item in Model.JourneyResponse.data)
                 {
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="col-12">
@@ -25,23 +31,23 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h6 style="color:#192289">09:30</h6>
+                                    <h6 style="color:#192289">@item.journey.departure.ToShortTimeString()</h6>
                                 </div>
 
                                 <div class="col-3">
-                                    <h6 style="color:#192289">15:30</h6>
+                                    <h6 style="color:#192289">@item.journey.arrival.ToShortTimeString()</h6>
                                 </div>
 
                                 <div class="col-3">
                                     <div class="badge text-wrap" style="background-color:#d23b38">
-                                       75,00 TL
+                                        @item.journey.providerinternetprice @item.journey.currency
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        <small>Esenler Otogarı - Ankara Aşti Otogarı</small>
+                        <small>@item.journey.origin - @item.journey.destination</small>
                     </a>
                 }
             </div>

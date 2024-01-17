@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OBilet.Presentation.UI.Web.Infrastructure;
 using OBilet.Presentation.UI.Web.Models;
 using OBilet.Presentation.UI.Web.Models.Home;
 using System.Diagnostics;
@@ -7,12 +8,13 @@ namespace OBilet.Presentation.UI.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILocationBusService _locationBusService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILocationBusService locationBusService)
         {
-            _logger = logger;
+            _locationBusService = locationBusService;
         }
+
 
         public IActionResult Index()
         {
@@ -24,16 +26,6 @@ namespace OBilet.Presentation.UI.Web.Controllers
 
             return View(viewModel);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    
     }
 }

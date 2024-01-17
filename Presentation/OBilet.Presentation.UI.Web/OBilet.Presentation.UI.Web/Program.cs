@@ -1,9 +1,22 @@
+using OBilet.Presentation.UI.Web.Infrastructure;
+using OBilet.Presentation.UI.Web.Services.Concrete;
+using OBilet.Presentation.UI.Web.Services.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.Configure<OBiletApiSettings>(builder.Configuration.GetSection("OBiletApiSettings"));
+
+builder.Services.AddHttpClient();
+
+
+builder.Services.AddScoped<ILocationBusService, LocationBusService>();
+builder.Services.AddScoped<IJourneyService, JourneyService>();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
