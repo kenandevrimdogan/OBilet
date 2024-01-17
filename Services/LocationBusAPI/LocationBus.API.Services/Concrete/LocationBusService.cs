@@ -44,9 +44,9 @@ namespace LocationBus.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBuslocations, payload);
 
-            var response = await result.Content.ReadFromJsonAsync<Result<BusLocationResponseModel>>();
+            var response = await result.Content.ReadFromJsonAsync<BusLocationResponseModel>();
 
-            return response;
+            return new Result<BusLocationResponseModel>(response);
         }
     }
 }

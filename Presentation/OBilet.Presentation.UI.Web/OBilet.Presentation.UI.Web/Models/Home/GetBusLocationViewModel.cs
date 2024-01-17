@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace OBilet.Presentation.UI.Web.Models.Home
@@ -20,6 +21,8 @@ namespace OBilet.Presentation.UI.Web.Models.Home
         public bool? IsError { get; set; }
 
         public List<string> ErrorMessages { get; set; } = new List<string>();
+
+        public List<SelectListItem> Regions { get; set; }
 
     }
 }

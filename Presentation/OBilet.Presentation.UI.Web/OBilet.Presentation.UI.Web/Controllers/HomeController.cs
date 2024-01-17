@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OBilet.Presentation.UI.Web.Infrastructure;
 using OBilet.Presentation.UI.Web.Models.Home;
 using OBilet.Presentation.UI.Web.Models.LocationBus;
@@ -17,20 +18,40 @@ namespace OBilet.Presentation.UI.Web.Controllers
         }
 
 
-        public IActionResult Index([FromQuery]GetBusLocationViewModel request)
+        public async Task<IActionResult> Index([FromQuery] GetBusLocationViewModel request)
         {
             if (!request.DepartureDate.HasValue)
             {
                 request.DepartureDate = DateTime.Now;
             }
 
+            //var result = await _locationBusService.GetBusLocationsAsync();
+
+            //request.Regions = 
+
+
             return View(request);
         }
 
-        [HttpPost("getBusLocations")]
-        public async Task<IActionResult> GetBusLocationsAsync([FromBody] BuslocationRequest request)
+        public async Task<IActionResult> GetBusLocationsAsync(string search)
         {
-            var result = await _locationBusService.GetBusLocationsAsync(request);
+            var apiResult = await _locationBusService.GetBusLocationsAsync(new BuslocationRequest
+            {
+                Language = "tr-TR",
+                Date = DateTime.Now,
+                Data = search,
+                DeviceSession = new DeviceSessionRequest
+                {
+                    DeviceId = "PqtdftjloK3Kpka97+ILDzMa6D9740nggLiTzXiLlzA=",
+                    SessionId = "PqtdftjloK3Kpka97+ILDzMa6D9740nggLiTzXiLlzA="
+                }
+            });
+
+            var result = apiResult.Data.data.OrderBy(x => x.rank).Select(x => new SelectListItem
+            {
+                Text = x.name,
+                Value = x.id.ToString()
+            }).DistinctBy(x => x.Value).ToList();
 
             return Json(result);
         }

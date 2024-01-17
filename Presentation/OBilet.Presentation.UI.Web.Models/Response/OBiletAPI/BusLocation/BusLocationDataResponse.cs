@@ -22,7 +22,7 @@
 
         public string referencecode { get; set; }
 
-        public int cityid { get; set; }
+        public int? cityid { get; set; }
         
         public object referencecountry { get; set; }
 

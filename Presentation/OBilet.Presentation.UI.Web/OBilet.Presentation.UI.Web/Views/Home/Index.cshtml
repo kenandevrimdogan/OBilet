@@ -28,14 +28,18 @@
                     <div class="form-row">
                         <div class="form-group">
                             @Html.DisplayNameFor(x=> x.OriginId)
-                            @Html.TextBoxFor(x=> x.OriginId, new {@class = "form-control", @placeholder="İstanbul Avrupa"})
+                            <select id="OriginId" name="OriginId" class="form-control select2" placeholder="İstanbul Avrupa">
+
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             @Html.DisplayNameFor(x=> x.DestinationId)
-                            @Html.TextBoxFor(x=> x.DestinationId, new {@class = "form-control", @placeholder="Ankara"})
+
+                            <select id="DestinationId" name="DestinationId" class="form-control" placeholder="Ankara">
+                            </select>
                         </div>
                     </div>
 

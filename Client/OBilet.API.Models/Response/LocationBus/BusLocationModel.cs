@@ -30,13 +30,13 @@ namespace OBilet.API.Models.Response
         public string ReferenceCode { get; set; }
 
         [JsonProperty("city-id")]
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
 
         [JsonProperty("reference-country")]
         public object ReferenceCountry { get; set; }
 
         [JsonProperty("country-id")]
-        public int CountryId { get; set; }
+        public int? CountryId { get; set; }
 
         public string Keywords { get; set; }
 

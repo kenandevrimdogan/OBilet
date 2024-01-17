@@ -4,47 +4,65 @@ $(document).ready(() => {
     const $buttonToday = $("#buttonToday");
     const $buttonTomorrow = $("#buttonTomorrow");
 
-    const $searchForm = $("#searchForm");
-    const $inputOriginId = $("#OriginId");
-    const $inputDestinationId = $("#DestinationId");
     const $inputDepartureDate = $("#DepartureDate");
 
+    function getBusLocations(inputName) {
+        $(inputName).select2({
+            ajax: {
+                type: "GET",
+                url: '/home/getBusLocations',
+                dataType: 'json',
+                delay: 250,
+                minimumInputLength: 3,
+                minimumResultsForSearch: 10,
+                data: function (params) {
+                    var query = {
+                        search: params.term
+                    }
 
+                    return query;
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.text,
+                                id: item.value
+                            }
+                        })
+                    };
+                }
+            }
+        })
+    }
+
+    getBusLocations("#OriginId");
+    getBusLocations("#DestinationId");
+
+
+
+    function getDateFormat(date) {
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+        var dateFormat = date.getFullYear() + "-" + (month) + "-" + (day);
+
+        return dateFormat;
+    }
 
     function getCurrentDate() {
-        return new Date().toLocaleDateString();
+        var now = new Date();
+        return getDateFormat(now);
     }
 
 
     function getTomorrowDate() {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        return tomorrow.toLocaleDateString();
+        var date = new Date();
+        date.setDate(date.getDate() + 1)
+
+        return getDateFormat(date);;
     }
 
-    function performAjaxRequest(data) {
-        $.ajax({
-            type: 'POST',
-            url: '/Journey/Index',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-        })
-            .fail((err) => {
-                console.error(err);
-            });
-    }
-
-    //$searchForm.submit(function (event) {
-    //    event.preventDefault();
-
-    //    const data = {
-    //        OriginId: $inputOriginId.val(),
-    //        DestinationId: $inputDestinationId.val(),
-    //        DepartureDate: $inputDepartureDate.val()
-    //    };
-
-    //    performAjaxRequest(data);
-    //});
 
     $buttonToday.click(function () {
         $inputDepartureDate.val(getCurrentDate())

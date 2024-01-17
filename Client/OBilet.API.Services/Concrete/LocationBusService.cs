@@ -5,7 +5,6 @@ using OBilet.API.Models.Request;
 using OBilet.API.Models.Response;
 using OBilet.API.Services.Settings;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace OBilet.API.Services.Concrete

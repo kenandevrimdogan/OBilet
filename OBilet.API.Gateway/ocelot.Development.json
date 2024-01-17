@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/{version}/bus/{everything}",
+      "DownstreamPathTemplate": "/api/{version}/locationBus/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,7 +9,7 @@
           "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/api/{version}/bus/{everything}",
+      "UpstreamPathTemplate": "/api/{version}/locationBus/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
     {

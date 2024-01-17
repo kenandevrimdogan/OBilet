@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Presentation\OBilet.Presentation.UI.Web.Models\OBilet.Presentation.UI.Web.Models.csproj" />
     <ProjectReference Include="..\OBilet.API.Infrastructure\OBilet.API.Infrastructure.csproj" />
     <ProjectReference Include="..\OBilet.API.Models\OBilet.API.Models.csproj" />
   </ItemGroup>

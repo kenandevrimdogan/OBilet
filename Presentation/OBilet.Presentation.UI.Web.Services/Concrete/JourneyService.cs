@@ -26,8 +26,6 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
 
         public async Task<Result<JourneyResponse>> GetBusJourneysAsync(JourneyRequest request)
         {
-            request.Data.OriginId = 349;
-            request.Data.DestinationId = 349;
             request.DeviceSession = new DeviceSessionRequest
             {
                 deviceid = "DKMHoF/ilAZxShoqWY7CQsdwcj+O2KLrECp2THDyOTM=",

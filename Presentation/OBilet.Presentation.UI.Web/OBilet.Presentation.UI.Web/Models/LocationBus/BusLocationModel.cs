@@ -22,11 +22,11 @@
 
         public string ReferenceCode { get; set; }
 
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
 
         public object ReferenceCountry { get; set; }
 
-        public int CountryId { get; set; }
+        public int? CountryId { get; set; }
 
         public string Keywords { get; set; }
 
