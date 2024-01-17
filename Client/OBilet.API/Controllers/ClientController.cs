@@ -16,7 +16,7 @@ namespace OBilet.API.Controllers
             _clientService = clientService;
         }
 
-        [HttpPost("getSessionAsync")]
+        [HttpPost("getSession")]
         public async Task<SessionResponse> GetSessionAsync([FromBody] SessionRequest request)
         {
             return await _clientService.GetSessionAsync(request);

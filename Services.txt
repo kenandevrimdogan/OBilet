@@ -6,4 +6,5 @@ Services
 	- LocationBusServiceApi		: 5002
 	- JourneyServiceApi			: 5003
 	- Presentation.Web			: 5004
+	- IdentityApi				: 5005
 	

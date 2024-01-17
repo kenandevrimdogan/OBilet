@@ -25,11 +25,6 @@ namespace OBilet.Presentation.UI.Web.Controllers
                 request.DepartureDate = DateTime.Now;
             }
 
-            //var result = await _locationBusService.GetBusLocationsAsync();
-
-            //request.Regions = 
-
-
             return View(request);
         }
 
