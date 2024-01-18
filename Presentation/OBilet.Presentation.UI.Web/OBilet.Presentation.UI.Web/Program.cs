@@ -1,4 +1,5 @@
 using OBilet.Presentation.UI.Web.Infrastructure;
+using OBilet.Presentation.UI.Web.Services;
 using OBilet.Presentation.UI.Web.Services.Concrete;
 using OBilet.Presentation.UI.Web.Services.Settings;
 
@@ -10,10 +11,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<OBiletApiSettings>(builder.Configuration.GetSection("OBiletApiSettings"));
 
 builder.Services.AddHttpClient();
-
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ILocationBusService, LocationBusService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

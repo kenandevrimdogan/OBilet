@@ -24,5 +24,10 @@ namespace OBilet.Presentation.UI.Web.Models.Home
 
         public List<SelectListItem> Regions { get; set; }
 
+        public string OriginText { get; set; }
+
+        public string DestinationText { get; set; }
+
+
     }
 }

@@ -25,11 +25,15 @@
             <div class="row">
                 @using (Html.BeginForm("Index", "Journey", FormMethod.Post))
                 {
+                    <input type="hidden" id="OriginIdValue" value="@Model.OriginId" />
+                    <input type="hidden" id="OriginText" value="@Model.OriginText" />
+                    <input type="hidden" id="DestinationIdValue" value="@Model.DestinationId" />
+                    <input type="hidden" id="DestinationText" value="@Model.DestinationText" />
+
                     <div class="form-row">
                         <div class="form-group">
                             @Html.DisplayNameFor(x=> x.OriginId)
                             <select id="OriginId" name="OriginId" class="form-control select2" placeholder="İstanbul Avrupa">
-
                             </select>
                         </div>
                     </div>
@@ -38,7 +42,7 @@
                         <div class="form-group">
                             @Html.DisplayNameFor(x=> x.DestinationId)
 
-                            <select id="DestinationId" name="DestinationId" class="form-control" placeholder="Ankara">
+                            <select id="DestinationId" name="DestinationId" class="form-control" placeholder="Ankara" value="@Model.OriginId">
                             </select>
                         </div>
                     </div>

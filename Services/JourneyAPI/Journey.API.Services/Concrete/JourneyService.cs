@@ -29,10 +29,23 @@ namespace Journey.API.Services.Concrete
         {
             var response = new Result<JourneyResponse>();
 
-            if(request.Data.DestinationId == request.Data.OriginId)
+            if (request.Data.OriginId == default
+                || request.Data.DestinationId == default)
             {
                 response.IsError = true;
-                response.ErrorMessages.Add("Aynı konumu hem köken hem de varış olarak seçemez");
+                response.ErrorMessages.Add("Varış veya Kalkış noktaları boş olamaz");
+            }
+
+            if (request.Data.DepartureDate.HasValue)
+            {
+                response.IsError = true;
+                response.ErrorMessages.Add("Kalkış zamanı boş olamaz");
+            }
+
+            if (request.Data.DestinationId == request.Data.OriginId)
+            {
+                response.IsError = true;
+                response.ErrorMessages.Add("Aynı konumu hem kalkış hem de varış olarak seçilemez");
             }
 
             if (request.Data.DepartureDate.Value.Date < DateTime.Now.Date)

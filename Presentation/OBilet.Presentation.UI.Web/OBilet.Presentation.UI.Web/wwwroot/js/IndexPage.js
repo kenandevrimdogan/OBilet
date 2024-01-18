@@ -6,6 +6,33 @@ $(document).ready(() => {
 
     const $inputDepartureDate = $("#DepartureDate");
 
+    const $hiddenInputOriginId = $("#OriginIdValue");
+    const $hiddenInputOriginText = $("#OriginText");
+
+    const $hiddenInputDestinationId = $("#DestinationIdValue");
+    const $hiddenInputDestinationText = $("#DestinationText");
+
+    function addSelectOption(data) {
+        return new Option(data.text, data.id, false, data.selected);
+    }
+
+    if ($hiddenInputOriginId.val()) {
+        $("#OriginId").append(addSelectOption({
+            text: $hiddenInputOriginText.val(),
+            id: $hiddenInputOriginId.val(),
+            selected: true
+        }))
+    }
+
+    if ($hiddenInputDestinationId.val()) {
+        $("#DestinationId").append(addSelectOption({
+            text: $hiddenInputDestinationText.val(),
+            id: $hiddenInputDestinationId.val(),
+            selected: true
+        }))
+    }
+
+
     function getBusLocations(inputName) {
         $(inputName).select2({
             ajax: {
@@ -37,39 +64,39 @@ $(document).ready(() => {
     }
 
     getBusLocations("#OriginId");
-    getBusLocations("#DestinationId");
+getBusLocations("#DestinationId");
 
 
 
-    function getDateFormat(date) {
-        var day = ("0" + date.getDate()).slice(-2);
-        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+function getDateFormat(date) {
+    var day = ("0" + date.getDate()).slice(-2);
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
 
-        var dateFormat = date.getFullYear() + "-" + (month) + "-" + (day);
+    var dateFormat = date.getFullYear() + "-" + (month) + "-" + (day);
 
-        return dateFormat;
-    }
+    return dateFormat;
+}
 
-    function getCurrentDate() {
-        var now = new Date();
-        return getDateFormat(now);
-    }
-
-
-    function getTomorrowDate() {
-        var date = new Date();
-        date.setDate(date.getDate() + 1)
-
-        return getDateFormat(date);;
-    }
+function getCurrentDate() {
+    var now = new Date();
+    return getDateFormat(now);
+}
 
 
-    $buttonToday.click(function () {
-        $inputDepartureDate.val(getCurrentDate())
-    })
+function getTomorrowDate() {
+    var date = new Date();
+    date.setDate(date.getDate() + 1)
 
-    $buttonTomorrow.click(function () {
-        $inputDepartureDate.val(getTomorrowDate())
-    })
+    return getDateFormat(date);;
+}
+
+
+$buttonToday.click(function () {
+    $inputDepartureDate.val(getCurrentDate())
+})
+
+$buttonTomorrow.click(function () {
+    $inputDepartureDate.val(getTomorrowDate())
+})
 
 })
