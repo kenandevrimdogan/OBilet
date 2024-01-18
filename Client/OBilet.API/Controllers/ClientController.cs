@@ -5,7 +5,7 @@ using OBilet.API.Models.Response.Client;
 
 namespace OBilet.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ClientController : ControllerBase
     {

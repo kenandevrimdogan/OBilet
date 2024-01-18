@@ -1,5 +1,6 @@
 ﻿using Identity.API.Infrastructure;
 using Identity.API.Models.Request.OBiletApi;
+using Identity.API.Models.Response;
 using Identity.API.Models.Response.OBiletApi;
 using Identity.API.Services.Settings;
 using Microsoft.Extensions.Options;
@@ -24,7 +25,7 @@ namespace Identity.API.Services.Concrete
             _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
         }
 
-        public async Task<SessionResponse> GetSessionAsync(SessionRequest request)
+        public async Task<Result<SessionResponse>> GetSessionAsync(SessionRequest request)
         {
             var jsonbody = JsonConvert.SerializeObject(request);
 
@@ -32,7 +33,7 @@ namespace Identity.API.Services.Concrete
 
             var response = await result.Content.ReadFromJsonAsync<SessionResponse>();
 
-            return response;
+            return new Result<SessionResponse>(response);
         }
     }
 }

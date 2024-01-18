@@ -2,8 +2,8 @@
 {
     public class BrowserRequest
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string version { get; set; }
+        public string Version { get; set; }
     }
 }

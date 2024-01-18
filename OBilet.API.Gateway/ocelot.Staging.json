@@ -23,6 +23,18 @@
       ],
       "UpstreamPathTemplate": "/api/{version}/journey/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/identity/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/identity/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ]
 }

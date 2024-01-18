@@ -31,7 +31,7 @@ namespace OBilet.API.Services.Concrete
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetSession, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
 
-            var response = await result.Content.ReadFromJsonAsync<SessionResponse>();
+            var response = JsonConvert.DeserializeObject<SessionResponse>(await result.Content.ReadAsStringAsync());
 
             return response;
         }

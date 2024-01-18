@@ -17,6 +17,7 @@ builder.Services.AddHttpClient();
 // Services
 builder.Services.AddScoped<IJourneyService, JourneyService>();
 builder.Services.AddScoped<ILocationBusService, LocationBusService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 

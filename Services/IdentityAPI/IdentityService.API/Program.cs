@@ -1,3 +1,5 @@
+using Identity.API.Infrastructure;
+using Identity.API.Services.Concrete;
 using Identity.API.Services.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<OBiletClientApiSettings>(builder.Configuration.GetSection("OBiletClientApiSettings"));
+
+// Services
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
