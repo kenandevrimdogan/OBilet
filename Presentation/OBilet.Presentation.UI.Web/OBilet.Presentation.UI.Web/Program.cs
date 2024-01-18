@@ -1,4 +1,5 @@
 using OBilet.Presentation.UI.Web.Infrastructure;
+using OBilet.Presentation.UI.Web.Middleware;
 using OBilet.Presentation.UI.Web.Services;
 using OBilet.Presentation.UI.Web.Services.Concrete;
 using OBilet.Presentation.UI.Web.Services.Settings;
@@ -18,6 +19,7 @@ builder.Services.AddScoped<IJourneyService, JourneyService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddMemoryCache();
+builder.Services.AddTransient<HeaderCheckMiddleware>();
 
 var app = builder.Build();
 

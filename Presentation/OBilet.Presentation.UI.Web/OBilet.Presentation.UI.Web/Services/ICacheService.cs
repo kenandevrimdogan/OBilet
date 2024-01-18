@@ -7,5 +7,7 @@ namespace OBilet.Presentation.UI.Web.Services
         Task SetSessionInfoAsync();
 
         SessionModel GetSessionInfo();
+
+        JourneySearchModel GetJourneySearchModel();
     }
 }

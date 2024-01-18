@@ -2,8 +2,6 @@
 using OBilet.Presentation.UI.Web.Infrastructure;
 using OBilet.Presentation.UI.Web.Models.CacheModel;
 using OBilet.Presentation.UI.Web.Models.Request.OBiletAPI.Identity;
-using OBilet.Presentation.UI.Web.Models.Response;
-using OBilet.Presentation.UI.Web.Models.Response.OBiletAPI.Identity;
 
 namespace OBilet.Presentation.UI.Web.Services
 {
@@ -22,7 +20,7 @@ namespace OBilet.Presentation.UI.Web.Services
 
         public async Task SetSessionInfoAsync()
         {
-            var sessionInfo = _memCache.Get($"{_httpContextAccessor.HttpContext.Connection.LocalIpAddress.Address}_session");
+            var sessionInfo = _memCache.Get($"{_httpContextAccessor.HttpContext.Connection.RemoteIpAddress}_session");
 
             if(sessionInfo != null)
             {
@@ -39,18 +37,18 @@ namespace OBilet.Presentation.UI.Web.Services
                 },
                 Connection = new ConnectionRequest
                 {
-                    IpAddress = _httpContextAccessor.HttpContext.Connection.LocalIpAddress.Address.ToString(),
-                    Port = _httpContextAccessor.HttpContext.Connection.LocalPort.ToString()
+                    IpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString(),
+                    Port = _httpContextAccessor.HttpContext.Connection.RemotePort.ToString()
                 }
             });
 
 
             if(sessionInfo == null)
             {
-                _memCache.Set<SessionModel>($"{_httpContextAccessor.HttpContext.Connection.LocalIpAddress.Address}_session", new SessionModel
+                _memCache.Set<SessionModel>($"{_httpContextAccessor.HttpContext.Connection.RemoteIpAddress}_session", new SessionModel
                 {
                     DeviceId = session.Data.data.deviceid,
-                    IpAddress = _httpContextAccessor.HttpContext.Connection.LocalIpAddress.Address.ToString(),
+                    IpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString(),
                     SessionId = session.Data.data.sessionid
                 });
             }
@@ -58,7 +56,12 @@ namespace OBilet.Presentation.UI.Web.Services
 
         public SessionModel GetSessionInfo()
         {
-            return _memCache.Get<SessionModel>($"{_httpContextAccessor.HttpContext.Connection.LocalIpAddress.Address}_session");
+            return _memCache.Get<SessionModel>($"{_httpContextAccessor.HttpContext.Connection.RemoteIpAddress}_session");
+        }
+
+        public JourneySearchModel GetJourneySearchModel()
+        {
+            return _memCache.Get<JourneySearchModel>($"{_httpContextAccessor.HttpContext.Connection.RemoteIpAddress}_search");
         }
     }
 }

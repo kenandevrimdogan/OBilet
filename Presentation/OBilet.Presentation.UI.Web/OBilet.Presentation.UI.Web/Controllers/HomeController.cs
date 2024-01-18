@@ -14,20 +14,17 @@ namespace OBilet.Presentation.UI.Web.Controllers
     {
         private readonly ILocationBusService _locationBusService;
         private readonly ICacheService _cacheService;
-        private readonly IMemoryCache _memCache;
 
-        public HomeController(ILocationBusService locationBusService, IMemoryCache memCache, ICacheService cacheService)
+        public HomeController(ILocationBusService locationBusService, ICacheService cacheService)
         {
             _locationBusService = locationBusService;
-            _memCache = memCache;
             _cacheService = cacheService;
         }
 
 
         public async Task<IActionResult> Index([FromQuery] GetBusLocationViewModel request)
         {
-            var cacheSearch = _memCache.Get<JourneySearchModel>($"{HttpContext.Connection.LocalIpAddress.Address}_search");
-            await _cacheService.SetSessionInfoAsync();
+            var cacheSearch = _cacheService.GetJourneySearchModel();
 
             if (cacheSearch != null)
             {
@@ -48,17 +45,11 @@ namespace OBilet.Presentation.UI.Web.Controllers
 
         public async Task<IActionResult> GetBusLocationsAsync(string search)
         {
-            var session = _cacheService.GetSessionInfo();
             var apiResult = await _locationBusService.GetBusLocationsAsync(new BuslocationRequest
             {
                 Language = "tr-TR",
                 Date = DateTime.Now,
                 Data = search,
-                DeviceSession = new DeviceSessionRequest
-                {
-                    DeviceId = session.DeviceId,
-                    SessionId = session.SessionId
-                }
             });
 
             var result = apiResult.Data.data.OrderBy(x => x.rank).Select(x => new SelectListItem
