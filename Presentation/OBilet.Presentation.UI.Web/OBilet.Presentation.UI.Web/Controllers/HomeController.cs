@@ -6,7 +6,6 @@ using OBilet.Presentation.UI.Web.Models.CacheModel;
 using OBilet.Presentation.UI.Web.Models.DTO.Journey;
 using OBilet.Presentation.UI.Web.Models.Home;
 using OBilet.Presentation.UI.Web.Models.Request.OBiletAPI.BusLocation;
-using OBilet.Presentation.UI.Web.Services;
 
 namespace OBilet.Presentation.UI.Web.Controllers
 {

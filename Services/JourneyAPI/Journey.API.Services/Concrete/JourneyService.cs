@@ -36,7 +36,7 @@ namespace Journey.API.Services.Concrete
                 response.ErrorMessages.Add("Varış veya Kalkış noktaları boş olamaz");
             }
 
-            if (request.Data.DepartureDate.HasValue)
+            if (!request.Data.DepartureDate.HasValue)
             {
                 response.IsError = true;
                 response.ErrorMessages.Add("Kalkış zamanı boş olamaz");

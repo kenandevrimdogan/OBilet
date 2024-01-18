@@ -31,7 +31,7 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
         {
             var jsonbody = JsonConvert.SerializeObject(request);
 
-            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
+            var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetSession, new StringContent(jsonbody, Encoding.UTF8, "application/json"));
 
             var response = await result.Content.ReadFromJsonAsync<Result<SessionResponse>>();
 

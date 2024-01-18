@@ -14,18 +14,29 @@ namespace OBilet.Presentation.UI.Web.Services.Concrete
     {
         private readonly IOptions<OBiletApiSettings> _oBiletApiSettings;
         private readonly HttpClient _httpClient;
+        private readonly ICacheService _cacheService;
 
         public JourneyService(IOptions<OBiletApiSettings> oBiletApiSettings,
-            HttpClient httpClient)
+            HttpClient httpClient,
+            ICacheService cacheService)
         {
             _oBiletApiSettings = oBiletApiSettings;
             _httpClient = httpClient;
 
             _httpClient.BaseAddress = new Uri(_oBiletApiSettings.Value.BaseUrl);
+            _cacheService = cacheService;
         }
 
         public async Task<Result<JourneyResponse>> GetBusJourneysAsync(JourneyRequest request)
         {
+            var session = await _cacheService.SetSessionInfoAsync();
+
+            request.DeviceSession = new DeviceSessionRequest
+            {
+                sessionid = session.SessionId,
+                deviceid = session.DeviceId
+            };
+
             var jsonbody = JsonConvert.SerializeObject(request);
 
             var result = await _httpClient.PostAsync(_oBiletApiSettings.Value.GetBusJourneys, new StringContent(jsonbody, Encoding.UTF8, "application/json"));

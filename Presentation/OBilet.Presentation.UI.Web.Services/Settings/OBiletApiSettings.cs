@@ -7,5 +7,7 @@
         public string GetBusJourneys { get; set; }
 
         public string GetBusLocations { get; set; }
+
+        public string GetSession { get; set; }
     }
 }
